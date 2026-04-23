@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nayan Suryawanshi — Business Analyst Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0d1b2a;
+    --navy-mid: #1a2e42;
+    --navy-light: #243b53;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-pale: #f7f0dc;
+    --cream: #faf8f3;
+    --text-dark: #1a1a2e;
+    --text-mid: #3d4a5c;
+    --text-muted: #7a8595;
+    --white: #ffffff;
+    --border: rgba(201, 168, 76, 0.2);
+    --section-gap: 7rem;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13, 27, 42, 0.97);
+    backdrop-filter: blur(10px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 4rem;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 1.3rem;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(201,168,76,0.08) 0%, transparent 70%),
+      repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(201,168,76,0.03) 60px, rgba(201,168,76,0.03) 61px);
+  }
+  .hero-left {
+    padding: 8rem 4rem 4rem 6rem;
+    position: relative; z-index: 1;
+  }
+  .hero-eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block; width: 40px; height: 1px; background: var(--gold);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 4.5vw, 4rem);
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero-desc {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.65);
+    max-width: 420px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    text-decoration: none;
+    padding: 0.85rem 2rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline {
+    border: 1px solid rgba(201,168,76,0.5);
+    color: var(--gold);
+    text-decoration: none;
+    padding: 0.85rem 2rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+
+  .hero-right {
+    display: flex; align-items: center; justify-content: center;
+    padding: 8rem 4rem 4rem 2rem;
+    position: relative; z-index: 1;
+  }
+  .hero-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,168,76,0.25);
+    padding: 2.5rem;
+    max-width: 360px;
+    width: 100%;
+  }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.4rem; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag {
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold-light);
+    font-size: 0.75rem;
+    padding: 0.3rem 0.75rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* SECTIONS */
+  section { padding: var(--section-gap) 6rem; }
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+    color: var(--text-dark);
+    margin-bottom: 3rem;
+    max-width: 600px;
+  }
+
+  /* ABOUT */
+  .about { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: start; }
+  .about-text p { color: var(--text-mid); line-height: 1.9; margin-bottom: 1.2rem; font-size: 1rem; }
+  .edu-card {
+    background: var(--navy);
+    padding: 2rem 2.5rem;
+    color: white;
+    position: relative;
+  }
+  .edu-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  }
+  .edu-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  .edu-degree { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: white; margin-bottom: 0.4rem; }
+  .edu-school { font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-bottom: 1rem; }
+  .edu-cgpa {
+    display: inline-block;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold);
+    padding: 0.3rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  /* SKILLS */
+  .skills { background: var(--cream); }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .skill-cat {
+    background: white;
+    padding: 1.75rem;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+  }
+  .skill-cat-title { font-weight: 500; font-size: 0.85rem; color: var(--navy); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.2rem; }
+  .skill-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .skill-pill { background: var(--gold-pale); color: var(--navy-mid); font-size: 0.8rem; padding: 0.3rem 0.75rem; border: 1px solid rgba(201,168,76,0.35); }
+
+  /* PROJECTS */
+  .projects { background: var(--white); }
+  .projects-grid { display: grid; gap: 2.5rem; }
+  .project-card {
+    display: grid; grid-template-columns: 280px 1fr;
+    border: 1px solid #e8e4da;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+  }
+  .project-card:hover { box-shadow: 0 8px 40px rgba(13,27,42,0.1); }
+  .project-img {
+    height: 100%; min-height: 220px;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .project-body { padding: 2.5rem; }
+  .project-tag {
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.75rem;
+  }
+  .project-title { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--navy); margin-bottom: 0.75rem; }
+  .project-desc { font-size: 0.9rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 1.25rem; }
+  .project-bullets { list-style: none; }
+  .project-bullets li {
+    font-size: 0.85rem; color: var(--text-mid); padding: 0.3rem 0;
+    padding-left: 1.25rem; position: relative;
+  }
+  .project-bullets li::before {
+    content: '→'; position: absolute; left: 0; color: var(--gold); font-size: 0.8rem;
+  }
+
+  /* CERTIFICATIONS */
+  .certifications { background: var(--navy); }
+  .certifications .section-label { color: var(--gold); }
+  .certifications .section-label::after { background: rgba(201,168,76,0.25); }
+  .certifications .section-title { color: white; }
+  .certs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .cert-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 2rem;
+    display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start;
+  }
+  .cert-icon {
+    width: 56px; height: 56px;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.35);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .cert-issuer { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+  .cert-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: white; margin-bottom: 0.5rem; }
+  .cert-meta { font-size: 0.82rem; color: rgba(255,255,255,0.45); }
+  .cert-score {
+    display: inline-block;
+    margin-top: 0.75rem;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.35);
+    color: var(--gold-light);
+    font-size: 0.78rem;
+    padding: 0.25rem 0.75rem;
+  }
+
+  /* CERT IMAGES */
+  .cert-images { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+  .cert-img-wrap {
+    border: 1px solid rgba(201,168,76,0.25);
+    padding: 1rem;
+    background: rgba(255,255,255,0.04);
+  }
+  .cert-img-wrap img {
+    width: 100%; display: block;
+    filter: brightness(0.95);
+  }
+  .cert-img-caption { font-size: 0.75rem; color: rgba(255,255,255,0.4); text-align: center; margin-top: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* LEADERSHIP */
+  .leadership { background: var(--cream); }
+  .roles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .role-card {
+    padding: 2rem;
+    background: white;
+    border-left: 3px solid var(--gold);
+    border: 1px solid #e8e4da;
+    border-left: 3px solid var(--gold);
+  }
+  .role-title { font-weight: 500; font-size: 1rem; color: var(--navy); margin-bottom: 0.35rem; }
+  .role-org { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.85rem; }
+  .role-desc { font-size: 0.88rem; color: var(--text-mid); line-height: 1.75; }
+
+  /* CONTACT */
+  .contact {
+    background: var(--navy);
+    text-align: center;
+    padding: 7rem 6rem;
+  }
+  .contact .section-label { justify-content: center; }
+  .contact .section-label::after, .contact .section-label::before { content: ''; display: block; width: 60px; height: 1px; background: rgba(201,168,76,0.3); }
+  .contact .section-title { color: white; margin: 0 auto 1rem; }
+  .contact-desc { color: rgba(255,255,255,0.55); margin-bottom: 2.5rem; font-size: 1rem; }
+  .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+  .contact-link {
+    display: flex; align-items: center; gap: 0.6rem;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: all 0.2s;
+  }
+  .contact-link:hover { border-color: var(--gold); color: var(--gold); }
+  .contact-icon { font-size: 1rem; }
+
+  footer {
+    background: #0a141f;
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.08em;
+  }
+
+  /* FADE IN */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-up { animation: fadeUp 0.7s ease forwards; }
+  .delay-1 { animation-delay: 0.15s; opacity: 0; }
+  .delay-2 { animation-delay: 0.3s; opacity: 0; }
+  .delay-3 { animation-delay: 0.45s; opacity: 0; }
+  .delay-4 { animation-delay: 0.6s; opacity: 0; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    section { padding: 5rem 2rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 7rem 2rem 2rem; }
+    .hero-right { padding: 2rem; }
+    .about-grid, .skills-grid, .certs-grid, .cert-images, .roles-grid { grid-template-columns: 1fr; }
+    .project-card { grid-template-columns: 1fr; }
+    .project-img { min-height: 180px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="javascript:void(0)" onclick="document.getElementById('top').scrollIntoView({behavior:'smooth'})">NS</a>
+  <ul class="nav-links">
+    <li><a href="javascript:void(0)" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</a></li>
+    <li><a href="javascript:void(0)" onclick="document.getElementById('skills').scrollIntoView({behavior:'smooth'})">Skills</a></li>
+    <li><a href="javascript:void(0)" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">Projects</a></li>
+    <li><a href="javascript:void(0)" onclick="document.getElementById('certifications').scrollIntoView({behavior:'smooth'})">Certifications</a></li>
+    <li><a href="javascript:void(0)" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-left">
+    <div class="hero-eyebrow fade-up">Business Analyst</div>
+    <h1 class="fade-up delay-1">Nayan <span>Suryawanshi</span></h1>
+    <p class="hero-desc fade-up delay-2">
+      B.Tech Computer Science student at VIT — turning raw data into business clarity through SQL, Excel, and structured analytical thinking.
+    </p>
+    <div class="hero-cta fade-up delay-3">
+      <a href="javascript:void(0)" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})" class="btn-primary">View Projects</a>
+      <a href="javascript:void(0)" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-right fade-up delay-2">
+    <div class="hero-card">
+      <div class="stat-grid" style="grid-template-columns: repeat(3,1fr)">
+        <div class="stat-item">
+          <span class="stat-num">8.54</span>
+          <span class="stat-label">CGPA</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">3+</span>
+          <span class="stat-label">Projects</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">2</span>
+          <span class="stat-label">Certifications</span>
+        </div>
+      </div>
+      <div class="hero-tags">
+        <span class="tag">SQL</span>
+        <span class="tag">Excel</span>
+        <span class="tag">Business Analysis</span>
+        <span class="tag">Data Analytics</span>
+        <span class="tag">Process Mapping</span>
+        <span class="tag">MATLAB</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-label">About Me</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <h2 class="section-title">From data to decisions — that's what drives me</h2>
+      <p>I'm Nayan Sunil Suryawanshi, a final-year B.Tech Computer Science student at Vellore Institute of Technology, open to relocation and actively looking for Business Analyst opportunities.</p>
+      <p>My approach combines technical fluency in SQL and Excel with a genuine interest in understanding business problems at their core — mapping processes, identifying inefficiencies, and proposing data-backed solutions.</p>
+      <p>Across academic projects spanning retail sales analytics, customer segmentation, and healthcare operations, I've developed the habit of asking "why" before "what" — and letting data guide the answer.</p>
+    </div>
+    <div>
+      <div class="edu-card">
+        <div class="edu-label">Education</div>
+        <div class="edu-degree">B.Tech — Computer Science & Engineering</div>
+        <div class="edu-school">Vellore Institute of Technology &nbsp;·&nbsp; 2022–2026</div>
+        <span class="edu-cgpa">CGPA: 8.54 / 10</span>
+      </div>
+      <div style="margin-top: 1.5rem; padding: 1.5rem; background: var(--gold-pale); border: 1px solid var(--border);">
+        <div style="font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem;">Location & Availability</div>
+        <div style="font-size: 0.92rem; color: var(--text-mid); margin-bottom: 0.4rem;">📍 Buldhana, Maharashtra</div>
+        <div style="font-size: 0.92rem; color: var(--text-mid); margin-bottom: 0.4rem;">✈️ Open to Relocation</div>
+        <div style="font-size: 0.92rem; color: var(--text-mid);">🗣️ English, Hindi, Marathi</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+  <div class="section-label">Core Competencies</div>
+  <h2 class="section-title">Skills built for the analyst role</h2>
+  <div class="skills-grid">
+    <div class="skill-cat">
+      <div class="skill-cat-title">Business Analysis</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Requirement Gathering</span>
+        <span class="skill-pill">Process Mapping</span>
+        <span class="skill-pill">Business Requirements</span>
+        <span class="skill-pill">Process Optimization</span>
+        <span class="skill-pill">AS-IS / TO-BE Modeling</span>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-title">Data & Tools</div>
+      <div class="skill-pills">
+        <span class="skill-pill">SQL</span>
+        <span class="skill-pill">Microsoft Excel</span>
+        <span class="skill-pill">Pivot Tables</span>
+        <span class="skill-pill">Data Interpretation</span>
+        <span class="skill-pill">MATLAB</span>
+        <span class="skill-pill">User Behavior Analysis</span>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-title">Communication & Leadership</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Stakeholder Coordination</span>
+        <span class="skill-pill">Cross-functional Collaboration</span>
+        <span class="skill-pill">Presentation Skills</span>
+        <span class="skill-pill">Leadership</span>
+        <span class="skill-pill">Teamwork</span>
+        <span class="skill-pill">Adaptability</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="section-label">Selected Projects</div>
+  <h2 class="section-title">Real-world problems, analytical solutions</h2>
+  <div class="projects-grid">
+
+    <!-- Project 1: Walmart -->
+    <div class="project-card">
+      <div class="project-img" style="background: #0f2035; padding: 0;">
+        <svg viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" style="display:block;">
+          <rect width="280" height="220" fill="#0f2035"/>
+          <!-- Grid lines -->
+          <line x1="30" y1="20" x2="30" y2="180" stroke="#1e3a55" stroke-width="1"/>
+          <line x1="30" y1="180" x2="260" y2="180" stroke="#1e3a55" stroke-width="1"/>
+          <line x1="30" y1="140" x2="260" y2="140" stroke="#1e3a55" stroke-width="0.5" stroke-dasharray="3,3"/>
+          <line x1="30" y1="100" x2="260" y2="100" stroke="#1e3a55" stroke-width="0.5" stroke-dasharray="3,3"/>
+          <line x1="30" y1="60" x2="260" y2="60" stroke="#1e3a55" stroke-width="0.5" stroke-dasharray="3,3"/>
+          <!-- Bars -->
+          <rect x="45" y="110" width="22" height="70" fill="#c9a84c" rx="2"/>
+          <rect x="80" y="80" width="22" height="100" fill="#c9a84c" rx="2" opacity="0.85"/>
+          <rect x="115" y="50" width="22" height="130" fill="#e8c97a" rx="2"/>
+          <rect x="150" y="90" width="22" height="90" fill="#c9a84c" rx="2" opacity="0.85"/>
+          <rect x="185" y="65" width="22" height="115" fill="#e8c97a" rx="2"/>
+          <rect x="220" y="40" width="22" height="140" fill="#c9a84c" rx="2"/>
+          <!-- Trend line -->
+          <polyline points="56,105 91,75 126,48 161,85 196,62 231,38" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="4,2" opacity="0.5"/>
+          <!-- Labels -->
+          <text x="56" y="196" font-size="8" fill="#7a9bb5" text-anchor="middle" font-family="sans-serif">Jan</text>
+          <text x="91" y="196" font-size="8" fill="#7a9bb5" text-anchor="middle" font-family="sans-serif">Mar</text>
+          <text x="126" y="196" font-size="8" fill="#7a9bb5" text-anchor="middle" font-family="sans-serif">Jun</text>
+          <text x="161" y="196" font-size="8" fill="#7a9bb5" text-anchor="middle" font-family="sans-serif">Aug</text>
+          <text x="196" y="196" font-size="8" fill="#7a9bb5" text-anchor="middle" font-family="sans-serif">Oct</text>
+          <text x="231" y="196" font-size="8" fill="#7a9bb5" text-anchor="middle" font-family="sans-serif">Dec</text>
+          <!-- Title -->
+          <text x="140" y="212" font-size="9" fill="#c9a84c" text-anchor="middle" font-family="sans-serif" letter-spacing="1">WALMART SALES TREND</text>
+        </svg>
+      </div>
+      <div class="project-body">
+        <div class="project-tag">Excel · Pivot Tables · Data Analysis</div>
+        <h3 class="project-title">Sales Data Analysis — Walmart Dataset</h3>
+        <p class="project-desc">Deep-dived into Walmart's retail sales dataset to uncover trends, seasonality patterns, and store-level performance across multiple regions using Excel.</p>
+        <ul class="project-bullets">
+          <li>Used Pivot Tables, sorting, filtering, and aggregation to uncover sales patterns and holiday impact</li>
+          <li>Identified key revenue drivers across store segments and product categories</li>
+          <li>Generated insightful reports supporting inventory planning and sales strategy</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Project 2: Customer Segmentation -->
+    <div class="project-card">
+      <div class="project-img" style="background: #07151f; padding: 0;">
+        <svg viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" style="display:block;">
+          <rect width="280" height="220" fill="#07151f"/>
+          <!-- Segment circles -->
+          <circle cx="110" cy="105" r="60" fill="#c9a84c" opacity="0.18"/>
+          <circle cx="170" cy="105" r="50" fill="#e8c97a" opacity="0.18"/>
+          <circle cx="140" cy="145" r="45" fill="#a07830" opacity="0.18"/>
+          <!-- Circle borders -->
+          <circle cx="110" cy="105" r="60" fill="none" stroke="#c9a84c" stroke-width="1.5" opacity="0.6"/>
+          <circle cx="170" cy="105" r="50" fill="none" stroke="#e8c97a" stroke-width="1.5" opacity="0.6"/>
+          <circle cx="140" cy="145" r="45" fill="none" stroke="#a07830" stroke-width="1.5" opacity="0.6"/>
+          <!-- Center dot -->
+          <circle cx="140" cy="115" r="6" fill="#c9a84c"/>
+          <!-- User dots -->
+          <circle cx="80" cy="85" r="4" fill="#c9a84c" opacity="0.9"/>
+          <circle cx="95" cy="70" r="3" fill="#c9a84c" opacity="0.7"/>
+          <circle cx="88" cy="125" r="3.5" fill="#c9a84c" opacity="0.8"/>
+          <circle cx="70" cy="110" r="3" fill="#c9a84c" opacity="0.6"/>
+          <circle cx="190" cy="80" r="4" fill="#e8c97a" opacity="0.9"/>
+          <circle cx="205" cy="95" r="3" fill="#e8c97a" opacity="0.7"/>
+          <circle cx="195" cy="65" r="3.5" fill="#e8c97a" opacity="0.8"/>
+          <circle cx="155" cy="175" r="4" fill="#d4a855" opacity="0.9"/>
+          <circle cx="140" cy="185" r="3" fill="#d4a855" opacity="0.7"/>
+          <circle cx="125" cy="172" r="3.5" fill="#d4a855" opacity="0.8"/>
+          <!-- Labels -->
+          <text x="72" y="50" font-size="8" fill="#c9a84c" font-family="sans-serif" font-weight="bold">HIGH VALUE</text>
+          <text x="185" y="50" font-size="8" fill="#e8c97a" font-family="sans-serif" font-weight="bold">FREQUENT</text>
+          <text x="148" y="210" font-size="8" fill="#a07830" font-family="sans-serif" font-weight="bold" text-anchor="middle">LOW ENGAGEMENT</text>
+        </svg>
+      </div>
+      <div class="project-body">
+        <div class="project-tag">SQL · Segmentation · Marketing Analytics</div>
+        <h3 class="project-title">Customer Segmentation — E-commerce Dataset</h3>
+        <p class="project-desc">Segmented an e-commerce customer base by purchase behavior and demographics using advanced SQL techniques to surface lifecycle trends and engagement levels.</p>
+        <ul class="project-bullets">
+          <li>Applied SQL joins, subqueries, and aggregation to categorize high-value, frequent, and low-engagement users</li>
+          <li>Uncovered purchasing patterns and lifecycle trends from raw transactional data</li>
+          <li>Delivered actionable insights for targeted marketing and customer retention strategies</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Project 3: Healthcare -->
+    <div class="project-card">
+      <div class="project-img" style="background: #0a1a28; padding: 0;">
+        <svg viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" style="display:block;">
+          <rect width="280" height="220" fill="#0a1a28"/>
+          <!-- Flow nodes -->
+          <!-- Node 1: Patient Arrival -->
+          <rect x="20" y="85" width="60" height="32" rx="4" fill="#1e3a55" stroke="#c9a84c" stroke-width="1.2"/>
+          <text x="50" y="98" font-size="7" fill="#c9a84c" text-anchor="middle" font-family="sans-serif">PATIENT</text>
+          <text x="50" y="108" font-size="7" fill="#c9a84c" text-anchor="middle" font-family="sans-serif">ARRIVAL</text>
+          <!-- Arrow -->
+          <line x1="80" y1="101" x2="100" y2="101" stroke="#c9a84c" stroke-width="1.2"/>
+          <polygon points="100,97 108,101 100,105" fill="#c9a84c"/>
+          <!-- Node 2: Triage -->
+          <rect x="108" y="85" width="60" height="32" rx="4" fill="#1e3a55" stroke="#e8c97a" stroke-width="1.2"/>
+          <text x="138" y="98" font-size="7" fill="#e8c97a" text-anchor="middle" font-family="sans-serif">TRIAGE &</text>
+          <text x="138" y="108" font-size="7" fill="#e8c97a" text-anchor="middle" font-family="sans-serif">BOOKING</text>
+          <!-- Arrow -->
+          <line x1="168" y1="101" x2="188" y2="101" stroke="#c9a84c" stroke-width="1.2"/>
+          <polygon points="188,97 196,101 188,105" fill="#c9a84c"/>
+          <!-- Node 3: Appointment -->
+          <rect x="196" y="85" width="60" height="32" rx="4" fill="#1e3a55" stroke="#c9a84c" stroke-width="1.2"/>
+          <text x="226" y="98" font-size="7" fill="#c9a84c" text-anchor="middle" font-family="sans-serif">SLOT</text>
+          <text x="226" y="108" font-size="7" fill="#c9a84c" text-anchor="middle" font-family="sans-serif">ALLOCATED</text>
+          <!-- AS-IS label -->
+          <text x="140" y="70" font-size="8" fill="#7a9bb5" text-anchor="middle" font-family="sans-serif">AS-IS PROCESS</text>
+          <line x1="60" y1="74" x2="110" y2="74" stroke="#1e3a55" stroke-width="0.8"/>
+          <line x1="170" y1="74" x2="220" y2="74" stroke="#1e3a55" stroke-width="0.8"/>
+          <!-- Wait time bar (problem) -->
+          <rect x="30" y="135" width="220" height="12" rx="2" fill="#1e3a55"/>
+          <rect x="30" y="135" width="160" height="12" rx="2" fill="#8b3a3a" opacity="0.8"/>
+          <text x="30" y="162" font-size="7" fill="#cc6666" font-family="sans-serif">Long wait time (AS-IS)</text>
+          <!-- Optimized bar -->
+          <rect x="30" y="170" width="220" height="12" rx="2" fill="#1e3a55"/>
+          <rect x="30" y="170" width="80" height="12" rx="2" fill="#3a7a5a" opacity="0.8"/>
+          <text x="30" y="197" font-size="7" fill="#4caa7a" font-family="sans-serif">Reduced wait (TO-BE)</text>
+          <!-- TO-BE label -->
+          <text x="220" y="162" font-size="7" fill="#7a9bb5" font-family="sans-serif" text-anchor="end">↓ 50% wait time</text>
+        </svg>
+      </div>
+      <div class="project-body">
+        <div class="project-tag">Process Mapping · Workflow Analysis · BA</div>
+        <h3 class="project-title">Healthcare Appointment System Analysis</h3>
+        <p class="project-desc">Analysed existing scheduling workflows to identify bottlenecks causing long patient wait times and resource underutilisation, then designed an optimised model.</p>
+        <ul class="project-bullets">
+          <li>Mapped current AS-IS processes and designed a TO-BE scheduling model to reduce delays</li>
+          <li>Proposed time-slot optimization, prioritization logic, and workflow automation</li>
+          <li>Recommendations aimed at enhancing patient experience and operational efficiency</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="certifications" id="certifications">
+  <div class="section-label">Certifications</div>
+  <h2 class="section-title">Verified credentials</h2>
+
+  <div class="certs-grid">
+    <div class="cert-card">
+      <div class="cert-icon">📊</div>
+      <div>
+        <div class="cert-issuer">Intellipaat Academy</div>
+        <div class="cert-name">Free Excel Certification Course Online</div>
+        <div class="cert-meta">Certificate ID: 31679-2581-344287</div>
+        <div class="cert-meta">Issued April 23, 2026 &nbsp;·&nbsp; Verified by Mrs. Shilpi Jain</div>
+        <span class="cert-score">Completed · Verified</span>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">📈</div>
+      <div>
+        <div class="cert-issuer">NPTEL · IIT Kharagpur</div>
+        <div class="cert-name">Marketing Analytics — Elite Certificate</div>
+        <div class="cert-meta">Roll No: NPTEL25MG45S1142801939</div>
+        <div class="cert-meta">Jan–Apr 2025 &nbsp;·&nbsp; 12-week course &nbsp;·&nbsp; 3–4 credits</div>
+        <span class="cert-score">Consolidated Score: 69% &nbsp;|&nbsp; Top 1544 Certified</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Certificate images -->
+  <div class="cert-images">
+    <div class="cert-img-wrap">
+      <img src="https://images.unsplash.com/photo-1484788984921-03950022c9ef?w=600&q=80" alt="Excel Certificate placeholder" style="display:none" onerror="this.style.display='none'"/>
+      <div style="background: white; padding: 2rem; text-align: center; border: 1px solid #e0d9c8;">
+        <div style="font-size: 0.65rem; letter-spacing: 0.2em; color: #c9a84c; text-transform: uppercase; margin-bottom: 0.5rem;">Intellipaat Academy</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #0d1b2a; margin-bottom: 0.25rem;">Certificate of Completion</div>
+        <div style="font-size: 0.75rem; color: #5a6474;">Nayansuryawanshi289 &nbsp;·&nbsp; Free Excel Certification Course</div>
+        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #ece7da; font-size: 0.7rem; color: #999;">ID: 31679-2581-344287 &nbsp;·&nbsp; April 23, 2026</div>
+      </div>
+      <div class="cert-img-caption">Excel Certification — Intellipaat</div>
+    </div>
+    <div class="cert-img-wrap">
+      <div style="background: white; padding: 2rem; text-align: center; border: 1px solid #e0d9c8;">
+        <div style="font-size: 0.65rem; letter-spacing: 0.2em; color: #c9a84c; text-transform: uppercase; margin-bottom: 0.5rem;">NPTEL Online Certification · Elite</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #0d1b2a; margin-bottom: 0.25rem;">Marketing Analytics</div>
+        <div style="font-size: 0.75rem; color: #5a6474;">Nayan Sunil Suryawanshi &nbsp;·&nbsp; Consolidated Score: 69%</div>
+        <div style="margin: 0.75rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-size: 0.72rem;">
+          <div style="background: #f7f0dc; padding: 0.4rem; color: #5a4010;">Assignments: 24.06/25</div>
+          <div style="background: #f7f0dc; padding: 0.4rem; color: #5a4010;">Exam: 45/75</div>
+        </div>
+        <div style="font-size: 0.7rem; color: #999;">IIT Kharagpur &nbsp;·&nbsp; Jan–Apr 2025 &nbsp;·&nbsp; Prof. Haimanti Banerji</div>
+      </div>
+      <div class="cert-img-caption">Marketing Analytics — NPTEL · IIT Kharagpur</div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section class="leadership" id="leadership">
+  <div class="section-label">Leadership</div>
+  <h2 class="section-title">Positions of responsibility</h2>
+  <div class="roles-grid">
+    <div class="role-card">
+      <div class="role-title">PR & Outreach Associate</div>
+      <div class="role-org">Advitya · VIT Bhopal</div>
+      <p class="role-desc">Led public relations and outreach for campus events via social media, email campaigns, and on-campus marketing — engaging 800+ students through targeted communication strategies.</p>
+    </div>
+    <div class="role-card">
+      <div class="role-title">Hostel Community Representative</div>
+      <div class="role-org">VIT Bhopal</div>
+      <p class="role-desc">Organised hostel-level activities to improve student engagement and facilitated communication among residents, promoting collaboration, discipline, and community bonding.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">Let's Connect</div>
+  <h2 class="section-title">Open to Business Analyst roles</h2>
+  <p class="contact-desc">Available immediately · Open to relocation anywhere in India</p>
+  <div class="contact-links">
+    <a href="javascript:void(0)" onclick="window.open('tel:+919881260512')" class="contact-link"><span class="contact-icon">📞</span> +91-9881260512</a>
+    <a href="javascript:void(0)" onclick="window.open('mailto:nayansuryawanshi289@gmail.com')" class="contact-link"><span class="contact-icon">✉️</span> nayansuryawanshi289@gmail.com</a>
+    <a href="javascript:void(0)" onclick="window.open('https://www.linkedin.com/in/nayan-suryawanshi','_blank')" class="contact-link"><span class="contact-icon">🔗</span> LinkedIn</a>
+    <a href="javascript:void(0)" onclick="window.open('https://github.com/nayansuryawanshi289','_blank')" class="contact-link"><span class="contact-icon">💻</span> GitHub</a>
+  </div>
+</section>
+
+<footer>© 2026 Nayan Sunil Suryawanshi &nbsp;·&nbsp; Business Analyst Portfolio</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.project-card, .skill-cat, .cert-card, .role-card, .edu-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
